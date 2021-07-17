@@ -40,18 +40,18 @@ public class MaxConsecutiveSum {
         }
 
         int maxSum = Integer.MIN_VALUE;
-        int consecutiveSum = 0;
+        int currConsecutiveSum = 0;
         for(int i=0;i<kConsecutive;i++) {
-            consecutiveSum += arr[i];
+            currConsecutiveSum += arr[i];
         }
-        maxSum = Math.max(consecutiveSum,maxSum);
+        maxSum = Math.max(currConsecutiveSum,maxSum);
         int loopUntil = kConsecutive==arr.length-1?arr.length-kConsecutive:arr.length-kConsecutive-1;
 
         //this loop is the key logic of moving the sliding window and subtract one elem and add another element for max sum calculation
         for(int i=0; i<loopUntil; i++) {
-            int nextConsecutiveSum = (consecutiveSum + arr[i+kConsecutive]) - arr[i];
+            int nextConsecutiveSum = (currConsecutiveSum + arr[i+kConsecutive]) - arr[i];
             maxSum = Math.max(nextConsecutiveSum,maxSum);
-            consecutiveSum = nextConsecutiveSum;
+            currConsecutiveSum = nextConsecutiveSum;
         }
 
         return maxSum;

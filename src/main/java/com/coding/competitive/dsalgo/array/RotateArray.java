@@ -20,6 +20,15 @@ public class RotateArray {
         System.out.println("Rotated: "+ Arrays.toString(arr));
     }
 
+    /**
+     * Key concept is to first revers the first k(no. of rotation) elements
+     * Next reverse the next set(n-k) of elements
+     * At tihs point you have array with two subsections reversed
+     * Now just reversing the entire array will give result of k rotations.
+     * @param arr
+     * @param noOfRotations
+     * @param direction
+     */
     private static void rotate(int[] arr, int noOfRotations, char direction) {
         if(noOfRotations > arr.length)
             noOfRotations = noOfRotations % arr.length;
